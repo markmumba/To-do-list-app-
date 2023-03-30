@@ -1,0 +1,111 @@
+import React, { Fragment } from "react";
+import { useState } from "react";
+
+
+const Forms = () => {
+
+    const today = new Date();
+    const dateString = today.toISOString().split('T')[0];
+
+    const [task, setTask] = useState({
+        task: "",
+        date: dateString,
+        priority: {
+            high: false,
+            medium: false,
+            low: false,
+        },
+    });
+    console.log(task)
+
+    const handleChange = (e) => {
+        const { id, value, checked } = e.target;
+        if (id === 'high' || id === 'medium' || id === 'low') {
+            const checkedBoxes = Object.keys(task.priority).filter((key) => key !== id && task.priority[key])
+            if (checkedBoxes.length === 0) {
+                setTask({
+                    ...task,
+                    priority: {
+                        ...task.priority,
+                        [id]: checked,
+                    }
+                })
+            } else {
+                setTask({
+                    ...task,
+                    priority: {
+                        ...task.priority,
+                        [id]: false,
+                    }
+                })
+            }
+        } else {
+            setTask({
+                ...task,
+                [id]: value,
+            })
+        }
+
+    };
+
+
+    const handleSubmit = () => {
+        console.log(task);
+    }
+
+
+    return (
+        <Fragment>
+
+            <div className="max-w-lg  p-7 ml-3 mr-4  bg-transparent border border-gray-200 rounded-lg shadow-lg">
+                <form onSubmit={handleSubmit}>
+                    <div class="mb-6 mt-6 ">
+                        <label htmlFor="task" className="block mb-2 text-3xl font-medium text-center dark:text-white">Enter task </label>
+                        <input type="text" id="task"
+                            onChange={handleChange}
+                            value={task.task}
+                            className="bg-gray-50 border
+                         border-gray-300 text-gray-900 text-sm rounded-lg
+                          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+                           dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Task for the day" />
+                    </div>
+                    <div class="mb-6 mt-6 ">
+                        <label htmlFor="date" className="block mb-2 text-3xl font-medium text-center dark:text-white">Date </label>
+                        <input type="date" id="date" min={dateString}
+                            onChange={handleChange}
+                            value={task.date}
+                            className="bg-gray-50 border
+                         border-gray-300 text-gray-900 text-sm rounded-lg
+                          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+                           dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="pick a date " />
+                    </div>
+                    <h5 className="text-xl mb-3">Choose level of priority</h5>
+                    <div className="flex items-center mb-2">
+                        <input id="high" type="checkbox" checked={task.priority.high} onChange={handleChange} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label htmlFor="high" className="ml-2 text-sm font-medium dark:text-gray-300">High</label>
+                    </div>
+                    <div className="flex items-center mb-2" >
+                        <input id="medium" type="checkbox" checked={task.priority.medium} onChange={handleChange} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label htmlFor="medium" className="ml-2 text-sm font-medium  dark:text-gray-300">Medium</label>
+                    </div>
+                    <div className="flex items-center mb-2">
+                        <input id="low" type="checkbox" checked={task.priority.low} onChange={handleChange} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label htmlFor="low" className="ml-2 text-sm font-medium  dark:text-gray-300">Low</label>
+                    </div>
+                    <button type="button" className="text-white bg-[#7258AF] hover:bg-[#3b276b] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mb-3 mr-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cancel</button>
+                    <button type="submit" className="text-white bg-[#7258AF] hover:bg-[#3b276b]  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add</button>
+                </form>
+            </div>
+
+
+        </Fragment>
+
+    )
+}
+
+
+export default Forms;
