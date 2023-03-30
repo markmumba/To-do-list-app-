@@ -2,21 +2,21 @@ import React, { Fragment } from "react";
 import { useState } from "react";
 
 
-const Forms = () => {
+const Forms = (props) => {
 
     const today = new Date();
     const dateString = today.toISOString().split('T')[0];
 
     const [task, setTask] = useState({
         task: "",
-        date: dateString,
+        date: "",
+        description: "",
         priority: {
             high: false,
             medium: false,
             low: false,
         },
     });
-    console.log(task)
 
     const handleChange = (e) => {
         const { id, value, checked } = e.target;
@@ -48,19 +48,36 @@ const Forms = () => {
 
     };
 
-
-    const handleSubmit = () => {
-        console.log(task);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (task.task.trim().length !== 0 && task.date.trim().length !== 0) {
+            const currentPriority = Object.keys(task.priority).find((key) => task.priority[key] === true)
+            props.addTask({
+                ...task,
+                priority: currentPriority,
+                id: Math.floor(Math.random() * (100 - 1)) + 1
+            });
+            setTask({
+                task: "",
+                date: "",
+                description: "",
+                priority: {
+                    high: false,
+                    medium: false,
+                    low: false,
+                },
+            });
+        }
     }
 
 
     return (
         <Fragment>
 
-            <div className="max-w-lg  p-7 ml-3 mr-4  bg-transparent border border-gray-200 rounded-lg shadow-lg">
+            <div className="max-w-lg w-full p-7 ml-3 mr-4  bg-transparent border border-gray-200 rounded-lg shadow-lg">
                 <form onSubmit={handleSubmit}>
-                    <div class="mb-6 mt-6 ">
-                        <label htmlFor="task" className="block mb-2 text-3xl font-medium text-center dark:text-white">Enter task </label>
+                    <div className="mb-6 mt-6 ">
+                        <label htmlFor="task" className="block mb-2 text-sm font-medium dark:text-white">Enter task </label>
                         <input type="text" id="task"
                             onChange={handleChange}
                             value={task.task}
@@ -71,8 +88,8 @@ const Forms = () => {
                             dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Task for the day" />
                     </div>
-                    <div class="mb-6 mt-6 ">
-                        <label htmlFor="date" className="block mb-2 text-3xl font-medium text-center dark:text-white">Date </label>
+                    <div className="mb-6 mt-6 ">
+                        <label htmlFor="date" className="block text-sm font-medium  dark:text-white">Date </label>
                         <input type="date" id="date" min={dateString}
                             onChange={handleChange}
                             value={task.date}
@@ -83,6 +100,10 @@ const Forms = () => {
                             dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="pick a date " />
                     </div>
+
+                    <label htmlFor="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                    <textarea id="description" onChange={handleChange} value={task.description} rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+
                     <h5 className="text-xl mb-3">Choose level of priority</h5>
                     <div className="flex items-center mb-2">
                         <input id="high" type="checkbox" checked={task.priority.high} onChange={handleChange} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
