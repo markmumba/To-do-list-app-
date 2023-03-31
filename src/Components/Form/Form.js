@@ -74,7 +74,8 @@ const Forms = (props) => {
     return (
         <Fragment>
 
-            <div className="max-w-lg w-full p-7 ml-3 mr-4  bg-transparent border border-gray-200 rounded-lg shadow-lg">
+            <div className="max-w-lg w-full p-7 ml-3 mr-4 
+             backdrop-blur-sm bg-white/30 border border-gray-200 rounded-lg shadow-lg bg-gradient-to-br from-gray-200 ">
                 <form onSubmit={handleSubmit}>
                     <div className="mb-6 mt-6 ">
                         <label htmlFor="task" className="block mb-2 text-sm font-medium dark:text-white">Enter task </label>
@@ -117,8 +118,8 @@ const Forms = (props) => {
                         <input id="low" type="checkbox" checked={task.priority.low} onChange={handleChange} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                         <label htmlFor="low" className="ml-2 text-sm font-medium  dark:text-gray-300">Low</label>
                     </div>
-                    <button type="button" className="text-white bg-[#7258AF] hover:bg-[#3b276b] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mb-3 mr-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cancel</button>
-                    <button type="submit" className="text-white bg-[#7258AF] hover:bg-[#3b276b]  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add</button>
+                    <button type="button" className="bg-[#968E85]">Cancel</button>
+                    <button type="submit" className="bg-[#968E85]" >Add</button>
                 </form>
             </div>
 

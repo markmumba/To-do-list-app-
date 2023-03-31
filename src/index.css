@@ -2,12 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: "Inter", sans-serif;
+@font-face {
+  font-family: "MyFont";
+  src: local("MyFont"), url("./fonts/Inter-Regular.woff2 ") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
+:root {
+  font-family: "MyFont", sans-serif;
 }
 @supports (font-variation-settings: normal) {
   :root {
     font-family: "Inter var", sans-serif;
   }
+}
+
+button {
+  @apply text-white  hover:bg-[#68625b] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mb-3 mr-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 }
