@@ -74,8 +74,8 @@ const Forms = (props) => {
     return (
         <Fragment>
 
-            <div className="max-w-lg w-full p-7 ml-3 mr-4 
-             backdrop-blur-sm bg-white/30 border border-gray-200 rounded-lg shadow-lg bg-gradient-to-br from-gray-200 ">
+            <div className="max-w-[390px] md:max-w-xl  p-7  ml-3
+              bg-white/30 border border-gray-200 rounded-lg shadow-lg bg-gradient-to-br from-gray-200 ">
                 <form onSubmit={handleSubmit}>
                     <div className="mb-6 mt-6 ">
                         <label htmlFor="task" className="block mb-2 text-sm font-medium dark:text-white">Enter task </label>
@@ -102,7 +102,7 @@ const Forms = (props) => {
                             placeholder="pick a date " />
                     </div>
 
-                    <label htmlFor="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                    <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                     <textarea id="description" onChange={handleChange} value={task.description} rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
 
                     <h5 className="text-xl mb-3">Choose level of priority</h5>
@@ -118,8 +118,8 @@ const Forms = (props) => {
                         <input id="low" type="checkbox" checked={task.priority.low} onChange={handleChange} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                         <label htmlFor="low" className="ml-2 text-sm font-medium  dark:text-gray-300">Low</label>
                     </div>
-                    <button type="button" className="bg-[#968E85]">Cancel</button>
-                    <button type="submit" className="bg-[#968E85]" >Add</button>
+                    <button type="button"  className="text-white border bg-indigo-500 border-indigo-500 hover:bg-transparent hover:text-indigo-500 hover:border-none rounded-md px-6 py-2 m-2">Cancel</button>
+                    <button type="submit" className="text-white border bg-indigo-500 border-indigo-500 hover:bg-transparent hover:text-indigo-500 hover:border-none rounded-md px-6 py-2 m-2">Add</button>
                 </form>
             </div>
 

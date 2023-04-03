@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 
+import Navbar from "./Navbar/Navbar";
 import Forms from "./Form/Form";
 import Tasks from "./Task/Task";
 import Completed from "./Task/Completed";
@@ -10,6 +11,12 @@ const Main = () => {
 
     const [completed, setCompleted] = useState([]);
 
+    const [viewComplete,setViewComplete] = useState(false);
+
+    const handleViewComplete = () => {
+
+        setViewComplete( (prevState) =>(!prevState))
+    }
     const addTasks = (task) => {
         setTaskList([...taskList, task])
     }
@@ -26,17 +33,17 @@ const Main = () => {
     }
     const removeTask = (id) => {
         setTaskList(taskList.filter(task => task.id !== id));
-    }
-    console.log(taskList)
+        }
     return (
         <Fragment>
-            <div className="basis-1/2 ">
-                <Forms addTask={addTasks} />
-                <Completed completed={completed} />
+            <Navbar handleView={handleViewComplete} />
+            <div className="grid md:grid-cols-2 pt-20 ">
+                {viewComplete && <Completed completed={completed} />}
+                {!viewComplete && <Forms addTask={addTasks} />}
+
+                {!viewComplete  && <Tasks tasks={taskList} completeTask={completeTask} removeTask= {removeTask} /> }
             </div>
-            <div className="basis-1/2">
-                <Tasks tasks={taskList} completeTask={completeTask} removeTask= {removeTask} />
-            </div>
+
 
         </Fragment>
     )

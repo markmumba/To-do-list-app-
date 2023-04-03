@@ -26,13 +26,13 @@ const Tasks = (props) => {
 
     const dynamicClassName = (value) => {
         const color = colorPicker(value);
-        return `max-w-sm p-6 backdrop-blur-sm bg-gradient-to-br from-gray-200 border mb-2 ${color} border-l-8 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700`;
+        return `max-w-[390px] md:max-w-3xl p-6 ml-3  bg-gradient-to-br from-gray-200 border mb-2 ${color} border-l-8 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700`;
     };
 
 
     return (
 
-        <div className="mt-4">
+        <div className="mt-4 md:mt-0">
             {props.tasks.length === 0 ?
                 <div className=''>
                     <p className="text-xl mt-10"> It seems that you have no upcoming tasks you can add your tasks using the form </p>
@@ -47,14 +47,14 @@ const Tasks = (props) => {
                             <p className="mb-2 font-normal text-gray-700 dark:text-gray-400">
                                 {task.date === currentDate ? 'Today' : task.date}
                             </p>
-                            {console.log(task.date)}
-                            {console.log(currentDate)}
-                            <button type="button" onClick={() => props.removeTask(task.id)} className="bg-[#968E85]">Remove</button>
-                            <button type="button" onClick={() => props.completeTask(task.id)} className="bg-[#968E85]">Done</button>
+                            <button type="button" onClick={() => props.removeTask(task.id)} className="text-white border bg-indigo-500 border-indigo-500 hover:bg-transparent hover:text-indigo-500 hover:border-none rounded-md px-6 py-2 m-2">Remove</button>
+                            <button type="button" onClick={() => props.completeTask(task.id)} className="text-white border bg-indigo-500 border-indigo-500 hover:bg-transparent hover:text-indigo-500 hover:border-none rounded-md px-6 py-2 m-2">Done</button>
                         </div>
                     );
                 })
             }
+
+
 
 
         </div>
