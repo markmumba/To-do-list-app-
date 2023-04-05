@@ -67,7 +67,9 @@ const Forms = (props) => {
                     low: false,
                 },
             });
+            props.handleChange();
         }
+
     }
 
 

@@ -40,7 +40,7 @@ const Main = () => {
             <Navbar handleView={handleViewComplete} />
             <div className="grid md:grid-cols-2 pt-20 ">
                 {viewComplete && <Completed completed={completed} />}
-                {!viewComplete && <ChangeUI addTask={addTasks} />}
+                {!viewComplete && <ChangeUI addTask={addTasks}/>}
 
                 {!viewComplete  && <Tasks tasks={taskList} completeTask={completeTask} removeTask= {removeTask} /> }
             </div>
