@@ -34,7 +34,7 @@ const Tasks = (props) => {
 
         <div className="mt-4 md:mt-0">
             {props.tasks.length === 0 ?
-                <div className=''>
+                <div className='ml-3 max-w-[390px] md:max-w-3xl'>
                     <p className="text-xl mt-10"> It seems that you have no upcoming tasks you can add your tasks using the form </p>
                     <img className='' src={image} alt="no upcoming tasks" />
                 </div>

@@ -1,9 +1,10 @@
 import React, { Fragment, useState } from "react";
 
 import Navbar from "./Navbar/Navbar";
-import Forms from "./Form/Form";
+
 import Tasks from "./Task/Task";
 import Completed from "./Task/Completed";
+import ChangeUI from "./Form/ChangeUI";
 
 const Main = () => {
 
@@ -39,7 +40,7 @@ const Main = () => {
             <Navbar handleView={handleViewComplete} />
             <div className="grid md:grid-cols-2 pt-20 ">
                 {viewComplete && <Completed completed={completed} />}
-                {!viewComplete && <Forms addTask={addTasks} />}
+                {!viewComplete && <ChangeUI addTask={addTasks} />}
 
                 {!viewComplete  && <Tasks tasks={taskList} completeTask={completeTask} removeTask= {removeTask} /> }
             </div>
