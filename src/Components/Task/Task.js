@@ -37,7 +37,7 @@ const Tasks = (props) => {
                     return (
                         <div key={task.id}
                              onDoubleClick={() => props.removeTask(task.id)}
-                             className={`max-w-[390px] md:max-w-2xl p-3 md:p-6 ml-3  bg-gradient-to-br from-gray-200 border mb-2 ${colorPicker(task.priority)} border-l-8 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700`}>
+                             className={`max-w-[390px] md:max-w-2xl p-3 md:p-6 ml-3   border mb-2 ${colorPicker(task.priority)} border-l-8 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700`}>
                             <div className="flex">
                                 <input id="default-checkbox" type="checkbox" value=""
                                        onClick={() => props.completeTask(task.id)}
