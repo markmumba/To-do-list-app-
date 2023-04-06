@@ -91,7 +91,7 @@ const Forms = (props) => {
     return (
         <Fragment>
 
-            <div className="max-w-[390px] md:max-w-xl  p-7  ml-3
+            <div className="w-11/12 md:max-w-xl  p-7  ml-3
               bg-white/30 border border-gray-200 rounded-lg shadow-lg ">
                 <form onSubmit={handleSubmit}>
                     <div className="mb-6 mt-6 ">
