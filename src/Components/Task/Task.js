@@ -26,7 +26,7 @@ const Tasks = (props) => {
     return (
 
         <div className="mt-4 md:mt-0">
-            <p className=" md:hidden">Tip double tap to delete</p>
+            <p className="text-sm md:hidden">Tip :double tap to delete</p>
             {props.tasks.length === 0 ?
                 <div className='ml-3 max-w-[390px] md:max-w-3xl'>
                     <p className="text-xl mt-10"> It seems that you have no upcoming tasks you can add your tasks using
